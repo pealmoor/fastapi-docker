@@ -4,13 +4,16 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./:/app  
+      - ./:/app 
+      - sqlite_data:/app/notes_data  # Persistencia del archivo de SQLite
     environment:
       - HOLA=MUNDO
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     networks:
       - redlocal
 
+volumes:
+  sqlite_data:
+
 networks:
   redlocal:
-
